@@ -1,3 +1,5 @@
+/* jshint node: true, esversion: 6 */
+
 const express = require('express');
 const redis = require('redis');
 
@@ -9,7 +11,7 @@ const client = redis.createClient({
 	port: 6379
 });
 
-function factorial(n) {
+const factorial = (n) => {
 	if (n == 0) {
 		client.set(n, 1);
 		return 1;
@@ -20,11 +22,11 @@ function factorial(n) {
 	}
 };
 
-app.get('/:number', function (req, resp) {
+app.get('/:number', (req, resp) => {
 	const value = req.params.number;
 	if (value >= 10) process.exit(1);
 
-	client.get(value, function (err, result) {
+	client.get(value, (err, result) => {
 		if (result == null || result == undefined)
 			result = factorial(value);
 		console.log('REQ: ' + value + ', RESP: ' + result);
@@ -33,6 +35,6 @@ app.get('/:number', function (req, resp) {
 	});
 });
 
-app.listen(8080, function () {
+app.listen(8080, () => {
 	console.log('Server listening on port 8080.');
 });

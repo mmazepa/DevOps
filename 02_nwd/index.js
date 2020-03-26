@@ -1,3 +1,5 @@
+/* jshint node: true, esversion: 6 */
+
 const express = require('express');
 const redis = require('redis');
 const process = require('process');
@@ -8,7 +10,7 @@ const client = redis.createClient({
   port: 6379
 });
 
-function nwd (a, b) {
+var nwd = (a, b) => {
   var q;
   while (b != 0) {
     q = a;
@@ -18,7 +20,7 @@ function nwd (a, b) {
   return a;
 }
 
-app.get('/:n1/:n2', function (req, res) {
+app.get('/:n1/:n2', (req, res) => {
   const val1 = req.params.n1;
   const val2 = req.params.n2;
 
@@ -26,7 +28,7 @@ app.get('/:n1/:n2', function (req, res) {
 
   const pair = req.params.val1 + "," + req.params.val2;
 
-  client.get(pair, function (err, result) {
+  client.get(pair, (err, result) => {
     if (result) {
       res.send('nwd(' + val1 + ',' + val2 + ') = ' + result + '\n');
     } else {
@@ -37,6 +39,6 @@ app.get('/:n1/:n2', function (req, res) {
   });
 });
 
-app.listen(8081, function () {
+app.listen(8081, () => {
   console.log('Listening on port 8081.');
 });
