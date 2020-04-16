@@ -21,17 +21,86 @@ const pgClient = new Pool({
   port: keys.pgPort
 });
 
-pgClient.on('error', () => console.log('No connection to PG DB'));
+pgClient.on('error', () => {
+  console.log('No connection to PG DB');
+});
 
-pgClient.query('CREATE TABLE IF NOT EXISTS results(number INT)').catch(err => console.log(err));
-//pgClient.query('INSERT INTO results(number) VALUES (1), (2), (3)');
+pgClient.query('CREATE TABLE IF NOT EXISTS results(number INT)').catch(err => { 
+    console.log(err);
+});
 
 console.log(keys);
 
-app.get('/', (req, resp) => {
-  resp.send('Hello world!!!');
+const nwd = (num1, num2) => {
+  var tmp;
+  while (num2) {
+    tmp = num1 % num2;
+    num1 = num2;
+    num2 = tmp;
+  }
+  return num1;
+};
+
+const addResult = (value) => {
+  return new Promise((resolve, reject) => {
+    pgClient
+      .query("INSERT INTO results (number) VALUES ($1)", [value])
+      .then(() => {
+        resolve();
+      })
+      .catch((err) => {
+        reject(err);
+      });
+  })
+}
+
+app.get("/results", (req, resp) => {
+  pgClient
+    .query("SELECT DISTINCT number FROM results")
+    .then((data) => {
+      return resp.json(data.rows);
+    }).catch((err) => {
+      console.log(err);
+      return resp.status(500);
+    });
 });
 
-app.listen(8080, err => {
-  console.log('Server listening on port 8080');
+app.post("/results", (req, resp) => {
+  const tmp1 = parseInt(req.body.num1) || 0;
+  const tmp2 = parseInt(req.body.num2) || 0;
+
+  var num1, num2;
+
+  if (tmp1 > tmp2) {
+    num1 = tmp1;
+    num2 = tmp2;
+  } else {
+    num1 = tmp2;
+    num2 = tmp1;
+  }
+
+  const key = `${num1},${num2}`;
+
+  redisClient.get(key, async (err, value) => {
+    try {
+      if (value !== null) {
+        await addResult(value);
+        return resp.send("Wynik: " + `${value}` + "\n");
+      }
+      const result = nwd(num1, num2);
+      redisClient.set(key, result);
+      return resp.send("Wynik: " + `${result}` + "\n");
+    } catch (err) {
+      console.log(err);
+      return resp.status(500);
+    }
+  });
+});
+
+app.get('/', (req, resp) => {
+  resp.send('Hello world!!!\n');
+});
+
+app.listen(3000, err => {
+  console.log('Server listening on port 3000');
 });
