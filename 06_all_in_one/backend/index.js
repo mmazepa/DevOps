@@ -33,11 +33,9 @@ pgClient.query('CREATE TABLE IF NOT EXISTS fibonacci(key INT, value INT)').catch
 console.log(keys);
 
 const fib = (num) => {
-  console.log("Dostałem: " + num);
   if (num <= 0) return 0;
   else if (num == 1) return 1;
   else return (fib(num-1) + fib(num-2));
-  console.log("koniec :)");
 }
 
 const addResult = (key, value) => {
@@ -54,8 +52,10 @@ const addResult = (key, value) => {
 }
 
 app.get("/results", (req, resp) => {
+  console.log("GET request...");
+
   pgClient
-    .query("SELECT key, value FROM fibonacci")
+    .query("SELECT DISTINCT key, value FROM fibonacci ORDER BY key ASC")
     .then((data) => {
       return resp.json(data.rows);
     }).catch((err) => {
@@ -65,19 +65,20 @@ app.get("/results", (req, resp) => {
 });
 
 app.post("/results", (req, resp) => {
+  console.log("POST request... (" + req.body.param1 + ")");
+
   const num = parseInt(req.body.param1);
   const key = `${num}`;
 
   redisClient.get(key, async (err, value) => {
-    console.log("KLUCZ: " + key + ", WARTOŚĆ: " + value);
     try {
       if (value != null) {
         await addResult(key, value);
-        return resp.send("Wynik: " + `${key}` + ": " + `${value}` + "\n");
+        return resp.send("Fibonacci: fib(" + `${key}` + ") = " + `${value}` + "\n");
       }
       const result = fib(key);
       redisClient.set(key, result);
-      return resp.send("Wynik: " + `${key}` + ": " + `${result}` + "\n");
+      return resp.send("Fibonacci: fib(" + `${key}` + ") = " + `${result}` + "\n");
     } catch (err) {
       console.log(err);
       return resp.status(500);
