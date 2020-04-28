@@ -5,3 +5,4 @@
 3. [02.04.2020] **Frontend**
 4. [09.04.2020] **Frontend + Travis** ([inne repo](https://github.com/mmazepa/docker-my-frontend)) :exclamation:
 5. [16.04.2020] **Backend**
+6. [23.04.2020} **All In One**

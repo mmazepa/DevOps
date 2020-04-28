@@ -1,0 +1,20 @@
+{
+  "name": "05_backend",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "dev": "nodemon",
+    "start": "node index.js"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "pg": "*",
+    "express": "*",
+    "redis": "*",
+    "body-parser": "*",
+    "nodemon": "*"
+  }
+}

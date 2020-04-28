@@ -1,0 +1,1 @@
+docker run --env REDIS_HOST=my-redis --rm --name my-backend --network my-demo-app -v /opt/app/node_modules -v $(pwd):/opt/app -e PGHOST=my-postgres -e PGUSER=postgres -e PGDATABASE=postgres -e PGPASSWORD=123qaz123qaz -e PGPORT=5432 -p 4000:3000 $1
