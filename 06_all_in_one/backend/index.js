@@ -10,7 +10,8 @@ app.use(bodyParser.urlencoded({ extended: true }));
 const redis = require('redis');
 const redisClient = redis.createClient({
   host: keys.redisHost,
-  port: keys.redisPort
+  port: keys.redisPort,
+  retry_strategy: () => 1000
 });
 
 const { Pool } = require('pg');
@@ -78,6 +79,7 @@ app.post("/results", (req, resp) => {
       }
       const result = fib(key);
       redisClient.set(key, result);
+      await addResult(key, result);
       return resp.send("Fibonacci: fib(" + `${key}` + ") = " + `${result}` + "\n");
     } catch (err) {
       console.log(err);
@@ -87,7 +89,7 @@ app.post("/results", (req, resp) => {
 });
 
 app.get('/', (req, resp) => {
-  resp.send('Hello world!!!\n');
+  resp.send('Hello world from backend!\n');
 });
 
 app.listen(3000, err => {

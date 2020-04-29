@@ -10,13 +10,13 @@ services:
   my-redis-server:
     image: 'redis'
 
-#  nginx:
-#    restart: always
-#    build:
-#      dockerfile: Dockerfile.dev
-#      context: ./nginx
-#    ports:
-#      - '8080:80'
+  nginx:
+    restart: always
+    build:
+      dockerfile: Dockerfile.dev
+      context: ./nginx
+    ports:
+      - '8080:80'
 
   backend:
     build:
@@ -36,11 +36,11 @@ services:
     ports:
       - '4000:3000'
 
-#  frontend:
-#    build:
-#      dockerfile: Dockerfile.dev
-#      context: ./frontend
-#    volumes:
-#      - /opt/app/node_modules
-#      - ./frontend:/opt/app
-#    tty: true
+  frontend:
+    build:
+      dockerfile: Dockerfile.dev
+      context: ./frontend
+    volumes:
+      - /opt/app/node_modules
+      - ./frontend:/opt/app
+    tty: true
