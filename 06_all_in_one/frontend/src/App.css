@@ -1,38 +1,105 @@
 .App {
   text-align: center;
+  background-color: silver;
+  margin: 50px;
+  border: 1px solid grey;
+  border-radius: 20px;
+  padding: 10px;
 }
 
-.App-logo {
-  height: 20vmin;
-  pointer-events: none;
+.mainCalc {
+  display: block;
+  padding: 10px;
+  background-color: lightgrey;
+  border: 3px solid darkgrey;
+  border-bottom-left-radius: 50px;
+  border-bottom-right-radius: 50px;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 15s linear;
-  }
+.mainCalc label {
+  display: block;
+  font-weight: bold;
+  font-size: 18px;
+  padding: 10px;
 }
 
-.App-header {
-  background-color: DarkSlateGrey;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: Silver;
+.mainCalc input[type="number"] {
+  display: block;
+  width: 100px;
+  height: 30px;
+  font-size: 30px;
+  text-align: center;
+  margin: auto;
+  margin-bottom: 10px;
 }
 
-.App-link {
-  color: Cyan;
+.mainCalc button {
+  background-color: darkred;
+  color: white;
+  border: 3px outset tomato;
+  padding: 5px;
+  width: 100px;
+  height: 40px;
+  border-top-left-radius: 10px;
+  border-bottom-right-radius: 10px;
+  margin-left: 15px;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(3600deg);
-  }
+.mainCalc button:hover {
+  background-color: red;
+}
+
+.mainCalc button:active {
+  border: 3px inset tomato;
+}
+
+.history {
+  display: block;
+  padding: 10px;
+  background-color: lightblue;
+  margin-top: 15px;
+  border: 3px solid darkcyan;
+  border-top-left-radius: 50px;
+  border-top-right-radius: 50px;
+}
+
+.history table {
+  border-collapse: collapse;
+  width: 100%;
+  background-color: whitesmoke;
+  margin-top: 10px;
+}
+
+.history th, .history td {
+  padding: 8px;
+  text-align: left;
+  border-bottom: 1px solid #ddd;
+}
+
+.history tr:first-child {
+  background-color: dimgray;
+  color: white;
+}
+
+.history tr:not(:first-child):hover {
+  background-color: silver;
+}
+
+.history button {
+  background-color: navy;
+  color: white;
+  border: 3px outset lightblue;
+  padding: 5px;
+  width: 100px;
+  height: 40px;
+  border-top-right-radius: 10px;
+  border-bottom-left-radius: 10px;
+}
+
+.history button:hover {
+  background-color: blue;
+}
+
+.history button:active {
+  border: 3px inset lightblue;
 }

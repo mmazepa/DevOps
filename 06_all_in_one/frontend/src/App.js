@@ -49,29 +49,31 @@ export default class App extends React.Component {
     return (
       <div className="App">
         <h1>Ciąg Fibonacciego</h1>
-        <div style={{ padding: '25px' }}>
+        <div class="mainCalc">
           <form onSubmit={this.handleForSubmit}>
             <label>
               Podaj liczbę:
-              <br/>
-              <input type="number" name="number" min="0" onChange={this.handleFormChange} />
             </label>
-            <br/>
+            <input type="number" name="number" min="0" onChange={this.handleFormChange} required />
             <button type="submit">Wyślij!</button>
           </form>
           <label>{this.state.wynik}</label>
         </div>
-        <div style={{ padding: '25px' }}>
+        <div class="history">
           <form>
             <button onClick={this.handleShowResult}>Historia</button>
-            <br/>
-            <hr/>
-            {this.state.results.map((result) =>
-              <span key={result.key} style={{ display: "block" }}>
-                fib({result.key}) = {result.value}
-              </span>
-            )}
-            <hr/>
+            <table>
+              <tr>
+                <th>n</th>
+                <th>n-ta liczba Fibonacciego</th>
+              </tr>
+              {this.state.results.map((result) =>
+                <tr key={result.key}>
+                  <td>{result.key}</td>
+                  <td>{result.value}</td>
+                </tr>
+              )}
+            </table>
           </form>
         </div>
       </div>
