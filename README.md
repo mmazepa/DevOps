@@ -14,14 +14,17 @@
     <td>1</td>
     <td>19.03.2020</td>
     <td><b>Silnia</b></td>
-    <td>Obiczanie silni, Redis</td>
+    <td>Obliczanie silni, Redis</td>
     <td>-</td>
   </tr>
   <tr>
     <td>2</td>
     <td>26.03.2020</td>
     <td><b>NWD</b></td>
-    <td>Aplikacja wielokontenerowa: backend (Node) i cache (serwer Redis)</td>
+    <td>
+      Aplikacja wielokontenerowa:
+      backend (Node) i cache (serwer Redis)
+    </td>
     <td>-</td>
   </tr>
   <tr>
@@ -37,7 +40,9 @@
     <td><b>Frontend + Travis</b></td>
     <td>-</td>
     <td>
-      <a href="https://github.com/mmazepa/docker-my-frontend">inne repo</a>
+      <a href="https://github.com/mmazepa/docker-my-frontend">
+        inne repo
+      </a>
       :exclamation:
     </td>
   </tr>
@@ -56,10 +61,7 @@
     <td>23.04.2020</td>
     <td><b>All In One</b></td>
     <td>Zadanie zaliczeniowe, ciąg Fibonacciego</td>
-    <td>
-      :warning:
-      w budowie...
-    </td>
+    <td>-</td>
   </tr>
 </table>
 

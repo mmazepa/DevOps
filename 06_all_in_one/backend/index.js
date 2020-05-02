@@ -58,7 +58,7 @@ app.get("/results", (req, resp) => {
   pgClient
     .query("SELECT DISTINCT key, value FROM fibonacci ORDER BY key ASC")
     .then((data) => {
-      return resp.json(data.rows);
+      return resp.status(200).json(data.rows);
     }).catch((err) => {
       console.log(err);
       return resp.status(500);
@@ -66,21 +66,21 @@ app.get("/results", (req, resp) => {
 });
 
 app.post("/results", (req, resp) => {
-  console.log("POST request... (" + req.body.param1 + ")");
+  console.log("POST request... (" + req.body.number + ")");
 
-  const num = parseInt(req.body.param1);
+  const num = parseInt(req.body.number);
   const key = `${num}`;
 
   redisClient.get(key, async (err, value) => {
     try {
       if (value != null) {
         await addResult(key, value);
-        return resp.send("Fibonacci: fib(" + `${key}` + ") = " + `${value}` + "\n");
+        return resp.status(200).json({ liczba: key, wynik: value});
       }
       const result = fib(key);
       redisClient.set(key, result);
       await addResult(key, result);
-      return resp.send("Fibonacci: fib(" + `${key}` + ") = " + `${result}` + "\n");
+      return resp.status(200).json({ liczba: key, wynik: result});
     } catch (err) {
       console.log(err);
       return resp.status(500);
@@ -92,6 +92,6 @@ app.get('/', (req, resp) => {
   resp.send('Hello world from backend!\n');
 });
 
-app.listen(3000, err => {
-  console.log('Server listening on port 3000');
+app.listen(4000, err => {
+  console.log('Server listening on port 4000');
 });

@@ -1,39 +1,80 @@
 import React from 'react';
-import logo from './logo.svg';
 import './App.css';
-import axios from 'axios';
+import Axios from 'axios';
 
-function App() {
-  const handleClick = async () => {
-    const helloResponse = await axios.get('/api/');
-    console.log(helloResponse);
+export default class App extends React.Component {
+
+  state = {
+    results: [],
+    wynik: "",
+    number: ""
   }
 
-  return (
-    <div className="App">
-      <header className="App-header">
-        <div>
-          <img src={logo} className="App-logo" alt="logo" />
+  handleForSubmit = (event) => {
+    event.preventDefault();
+
+    Axios
+      .post(`/api/results`, {
+        number: this.state.number
+      }).then(response => {
+        console.log(response);
+        this.setState({
+          wynik: response.data.wynik
+        })
+      }).catch(error => {
+        console.log(error);
+      })
+  };
+
+  handleFormChange = (event) => {
+    this.setState({ number: event.target.value });
+  };
+
+  handleShowResult = (event) => {
+    event.preventDefault();
+
+    Axios
+      .get(`/api/results`)
+      .then(response => {
+        console.log(response);
+        this.setState({
+          results: response.data
+        })
+    }).catch(error => {
+      console.log(error);
+    })
+  };
+
+  render() {
+    return (
+      <div className="App">
+        <h1>Ciąg Fibonacciego</h1>
+        <div style={{ padding: '25px' }}>
+          <form onSubmit={this.handleForSubmit}>
+            <label>
+              Podaj liczbę:
+              <br/>
+              <input type="number" name="number" min="0" onChange={this.handleFormChange} />
+            </label>
+            <br/>
+            <button type="submit">Wyślij!</button>
+          </form>
+          <label>{this.state.wynik}</label>
         </div>
-        <p>
-          Hello World!
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-
-        <button onClick={handleClick}>
-          Send Request
-        </button>
-
-      </header>
-    </div>
-  );
+        <div style={{ padding: '25px' }}>
+          <form>
+            <button onClick={this.handleShowResult}>Historia</button>
+            <br/>
+            <hr/>
+            {this.state.results.map((result) =>
+              <span key={result.key} style={{ display: "block" }}>
+                fib({result.key}) = {result.value}
+              </span>
+            )}
+            <hr/>
+          </form>
+        </div>
+      </div>
+    )
+  }
 }
-
-export default App;
