@@ -1,3 +1,7 @@
+html {
+  background-image: url("background.png");
+}
+
 .App {
   text-align: center;
   background-color: silver;
@@ -5,6 +9,18 @@
   border: 1px solid grey;
   border-radius: 20px;
   padding: 10px;
+}
+
+h1 {
+  text-shadow: 2px 2px gray;
+}
+
+p {
+  text-align: justify;
+  width: 80%;
+  margin: auto;
+  margin-bottom: 25px;
+  font-size: smaller;
 }
 
 .mainCalc {
@@ -21,11 +37,13 @@
   font-weight: bold;
   font-size: 18px;
   padding: 10px;
+  color: darkslategrey;
+  text-shadow: 2px 2px lightsteelblue;
 }
 
 .mainCalc input[type="number"] {
   display: block;
-  width: 100px;
+  width: 150px;
   height: 30px;
   font-size: 30px;
   text-align: center;
@@ -38,15 +56,17 @@
   color: white;
   border: 3px outset tomato;
   padding: 5px;
-  width: 100px;
+  width: 125px;
   height: 40px;
   border-top-left-radius: 10px;
   border-bottom-right-radius: 10px;
-  margin-left: 15px;
+  text-shadow: 2px 2px black;
+  transition-duration: 0.5s;
 }
 
 .mainCalc button:hover {
   background-color: red;
+  transition-duration: 0.5s;
 }
 
 .mainCalc button:active {
@@ -72,17 +92,28 @@
 
 .history th, .history td {
   padding: 8px;
-  text-align: left;
+  text-align: right;
   border-bottom: 1px solid #ddd;
+  padding-right: 25px;
 }
 
 .history tr:first-child {
   background-color: dimgray;
   color: white;
+  text-shadow: 2px 2px black;
 }
 
 .history tr:not(:first-child):hover {
   background-color: silver;
+  transition-duration: 0.25s;
+}
+
+.history td:first-child {
+  width: 30%
+}
+
+.history td:not(:first-child) {
+  width: 70%;
 }
 
 .history button {
@@ -90,14 +121,17 @@
   color: white;
   border: 3px outset lightblue;
   padding: 5px;
-  width: 100px;
+  width: 125px;
   height: 40px;
   border-top-right-radius: 10px;
   border-bottom-left-radius: 10px;
+  text-shadow: 2px 2px black;
+  transition-duration: 0.5s;
 }
 
 .history button:hover {
   background-color: blue;
+  transition-duration: 0.5s;
 }
 
 .history button:active {

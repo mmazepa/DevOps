@@ -27,17 +27,26 @@ pgClient.on('error', () => {
   console.log('No connection to PG DB');
 });
 
-pgClient.query('CREATE TABLE IF NOT EXISTS fibonacci(key INT, value INT)').catch(err => { 
+pgClient.query('CREATE TABLE IF NOT EXISTS fibonacci(key INT, value BIGINT)')
+  .catch(err => {
     console.log(err);
-});
+  }
+);
 
 console.log(keys);
 
-const fib = (num) => {
-  if (num <= 0) return 0;
-  else if (num == 1) return 1;
-  else return (fib(num-1) + fib(num-2));
-}
+const memoFib = () => {
+  var memo = [0, 1];
+  fib = (n) => {
+    var result = memo[n];
+    if (typeof result !== 'number') {
+      result = fib(n-1) + fib(n-2);
+      memo[n] = result;
+    }
+    return result;
+  };
+  return fib;
+};
 
 const addResult = (key, value) => {
   return new Promise((resolve, reject) => {
@@ -75,12 +84,13 @@ app.post("/results", (req, resp) => {
     try {
       if (value != null) {
         await addResult(key, value);
-        return resp.status(200).json({ liczba: key, wynik: value});
+        return resp.status(200).json({ number: key, result: value});
       }
-      const result = fib(key);
+      const result = memoFib()(key);
+      console.log(result);
       redisClient.set(key, result);
       await addResult(key, result);
-      return resp.status(200).json({ liczba: key, wynik: result});
+      return resp.status(200).json({ number: key, result: result});
     } catch (err) {
       console.log(err);
       return resp.status(500);

@@ -33,8 +33,6 @@ services:
       - PGDATABASE=${PGDATABASE}
       - PGPASSWORD=${PGPASSWORD}
       - PGPORT=${PGPORT}
-    ports:
-      - '4000:3000'
 
   frontend:
     build:

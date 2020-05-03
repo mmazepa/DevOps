@@ -6,35 +6,35 @@ export default class App extends React.Component {
 
   state = {
     results: [],
-    wynik: "",
+    result: "",
     number: ""
   }
 
-  handleForSubmit = (event) => {
+  handleFormSubmit = (event) => {
     event.preventDefault();
 
-    Axios
-      .post(`/api/results`, {
-        number: this.state.number
-      }).then(response => {
-        console.log(response);
-        this.setState({
-          wynik: response.data.wynik
-        })
-      }).catch(error => {
-        console.log(error);
+    Axios.post("/api/results", {
+      number: this.state.number
+    }).then(response => {
+      console.log(response);
+      this.setState({
+        result: "Wynik: " + response.data.result
       })
+    }).catch(error => {
+      console.log(error);
+    })
   };
 
   handleFormChange = (event) => {
-    this.setState({ number: event.target.value });
+    this.setState({
+      number: event.target.value
+    });
   };
 
-  handleShowResult = (event) => {
+  handleShowResults = (event) => {
     event.preventDefault();
 
-    Axios
-      .get(`/api/results`)
+    Axios.get("/api/results")
       .then(response => {
         console.log(response);
         this.setState({
@@ -49,19 +49,39 @@ export default class App extends React.Component {
     return (
       <div className="App">
         <h1>Ciąg Fibonacciego</h1>
+        <p>
+          Aplikacja umożliwia obliczanie
+          wartości ciągu Fibonacciego.
+          Należy podać liczbę n oraz kliknąć
+          "Wyślij", a zostanie obliczona
+          n-ta liczba ciągu Fibonacciego.
+          Obliczone dotychczas wartości
+          można obejrzeć po kliknięciu
+          "Aktualizuj historię".
+        </p>
         <div class="mainCalc">
-          <form onSubmit={this.handleForSubmit}>
+          <form onSubmit={this.handleFormSubmit}>
             <label>
               Podaj liczbę:
             </label>
-            <input type="number" name="number" min="0" onChange={this.handleFormChange} required />
-            <button type="submit">Wyślij!</button>
+            <input type="number"
+                   name="number"
+                   min="0"
+                   onChange={this.handleFormChange}
+                   required />
+            <button type="submit">
+              Wyślij
+            </button>
           </form>
-          <label>{this.state.wynik}</label>
+          <label>
+            {this.state.result}
+          </label>
         </div>
         <div class="history">
           <form>
-            <button onClick={this.handleShowResult}>Historia</button>
+            <button onClick={this.handleShowResults}>
+              Aktualizuj Historię
+            </button>
             <table>
               <tr>
                 <th>n</th>
