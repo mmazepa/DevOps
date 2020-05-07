@@ -79,7 +79,18 @@
     <td>7</td>
     <td>30.04.2020</td>
     <td><b>k8s</b></td>
-    <td>-</td>
+    <td>
+      Definicje: POD, ReplicaSet, Deployment, NameSpace, Service
+    </td>
     <td>-</td>
   </tr>
+  <tr>
+    <td>8</td>
+    <td>07.05.2020</td>
+    <td><b>k8s Node App</b></td>
+    <td>
+      Aplikacja NodeJS, losuje liczbę podczas uruchamiania,
+      3 repliki w przestrzeni dev, Service typu NodePort
+    </td>
+    <td>-</td>
 </table>
