@@ -102,6 +102,6 @@
       Fragment clustra, Redis (replicas 2), Backend (replicas 3),
       Service typu NodePort - dostęp do klastra, do usługi/api backend
     </td>
-    <td></td>
+    <td>-</td>
   </tr>
 </table>

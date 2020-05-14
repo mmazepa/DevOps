@@ -20,6 +20,8 @@ metadata:
         containers:
           - name: my-backend-container
             image: mmazepa/mybackend
+            ports:
+              - containerPort: 4000 
 
   replicas: 3
   selector:

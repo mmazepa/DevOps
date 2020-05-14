@@ -8,10 +8,10 @@ metadata:
 spec:
   type: NodePort
   ports:
-    - targetPort: 3000
-      port: 80
+    - targetPort: 4000
+      port: 4000
       NodePort: 30009
 
   selector:
     app: myapp
-    type: frontend
+    type: backend
