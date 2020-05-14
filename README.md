@@ -97,7 +97,7 @@
   <tr>
     <td>9</td>
     <td>14.05.2020</td>
-    <td><b>Fragment clustra</b><td>
+    <td><b>Fragment clustra</b></td>
     <td>
       Fragment clustra, Redis (replicas 2), Backend (replicas 3),
       Service typu NodePort - dostęp do klastra, do usługi/api backend
