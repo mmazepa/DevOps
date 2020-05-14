@@ -3,7 +3,7 @@ apiVersion: apps/v1
 kind: Deployment
 
 metadata:
-  name: myapp-deployment
+  name: backend-deployment
   labels:
     app: myapp-backend
     type: backend
@@ -20,6 +20,11 @@ metadata:
         containers:
           - name: my-mybackend-container
             image: mmazepa/mybackend
+            env:
+              - name: REDIS_HOST
+                value: myredisservice
+              - name: REDIS_PORT
+                value: '6379'
 
   replicas: 3
   selector:
