@@ -10,7 +10,7 @@ spec:
   ports:
     - targetPort: 4000
       port: 4000
-      NodePort: 30009
+      nodePort: 30009
 
   selector:
     app: myapp

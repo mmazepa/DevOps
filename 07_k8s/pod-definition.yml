@@ -3,7 +3,7 @@ apiVersion: v1
 kind: Pod
 
 metadata:
-  name: myapp-pad
+  name: myapp-pod
   labels:
     app: myapp
     type: frontend

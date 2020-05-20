@@ -8,18 +8,18 @@ metadata:
     app: myredis
     type: cache
 
-  spec:
-    template:
-      metadata:
-        name: myredis-pod
-        labels:
-          app: myredis
-          type: cache
+spec:
+  template:
+    metadata:
+      name: myredis-pod
+      labels:
+        app: myredis
+        type: cache
 
-      spec:
-        containers:
-          - name: my-redis-container
-            image: redis
+    spec:
+      containers:
+        - name: my-redis-container
+          image: redis
 
   replicas: 2
   selector:

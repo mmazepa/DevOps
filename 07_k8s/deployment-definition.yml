@@ -8,18 +8,18 @@ metadata:
     app: myapp
     type: frontend
 
-  spec:
-    template:
-      metadata:
-        name: myapp-pod
-        labels:
-          app: myapp
-          type: frontend
+spec:
+  template:
+    metadata:
+      name: myapp-pod
+      labels:
+        app: myapp
+        type: frontend
 
-      spec:
-        containers:
-          - name: my-nginx-container
-            image: nginx
+    spec:
+      containers:
+        - name: my-nginx-container
+          image: nginx
 
   replicas: 3
   selector:
