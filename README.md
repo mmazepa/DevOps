@@ -1,4 +1,4 @@
-## Wybrane technologie DevOps 2020
+﻿## Wybrane technologie DevOps 2020
 
 ### DOCKER
 
@@ -101,6 +101,15 @@
     <td>
       Fragment clustra, Redis (replicas 2), Backend (replicas 3),
       Service typu NodePort - dostęp do klastra, do usługi/api backend
+    </td>
+    <td>-</td>
+  </tr>
+  <tr>
+    <td>10</td>
+    <td>21.05.2020</td>
+    <td><b>Cluster</b></td>
+    <td>
+      ConfigMap, Secret, rozbudowana sekcja env w deploymencie + frontend.
     </td>
     <td>-</td>
   </tr>
