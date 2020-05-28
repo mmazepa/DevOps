@@ -109,7 +109,7 @@
     <td>21.05.2020</td>
     <td><b>Cluster</b></td>
     <td>
-      ConfigMap, Secret, rozbudowana sekcja env w deploymencie + frontend.
+      ConfigMap, Secret, rozbudowana sekcja env w deploymencie + frontend
     </td>
     <td>-</td>
   </tr>
@@ -118,8 +118,8 @@
     <td>28.05.2020</td>
     <td><b>Cluster2</b></td>
     <td>
-      StorageClass, PersistentVolume, PersistentVolumeClaim,
-      + postgres deployment.
+      StorageClass, PersistentVolume, PersistentVolumeClaim
+      + postgres deployment
     </td>
     <td>-</td>
   </tr>
