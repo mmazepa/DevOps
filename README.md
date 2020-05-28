@@ -113,4 +113,14 @@
     </td>
     <td>-</td>
   </tr>
+  <tr>
+    <td>11</td>
+    <td>28.05.2020</td>
+    <td><b>Cluster2</b></td>
+    <td>
+      StorageClass, PersistentVolume, PersistentVolumeClaim,
+      + postgres deployment.
+    </td>
+    <td>-</td>
+  </tr>
 </table>
