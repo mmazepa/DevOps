@@ -26,7 +26,7 @@ app.get('/:n1/:n2', (req, res) => {
 
   console.log('num1: ' + val1 + ', num2: ' + val2);
 
-  const pair = req.params.val1 + "," + req.params.val2;
+  const pair = Math.max(val1, val2) + "," + Math.min(val1, val2);
 
   client.get(pair, (err, result) => {
     if (result) {
