@@ -1,5 +1,8 @@
 ﻿## Wybrane technologie DevOps 2020
 
+:information_source:
+**Ostatnia aktualizacja:** 01.06.2020
+
 ### DOCKER
 
 <table>
@@ -31,14 +34,14 @@
     <td>3</td>
     <td>02.04.2020</td>
     <td><b>Frontend</b></td>
-    <td>-</td>
+    <td>Pierwszy frontend, aplikacja Reactowa</td>
     <td>-</td>
   </tr>
   <tr>
     <td>4</td>
     <td>09.04.2020</td>
     <td><b>Frontend + Travis</b></td>
-    <td>-</td>
+    <td>Frontend i testowanie TravisCI</td>
     <td>
       <a href="https://github.com/mmazepa/docker-my-frontend">
         inne repo
@@ -122,5 +125,17 @@
       + postgres deployment
     </td>
     <td>-</td>
+  </tr>
+  <tr>
+    <td>12</td>
+    <td>-</td>
+    <td><b>FullCluster</b></td>
+    <td>
+      Kompletny klaster uwzględniający trzy wcześniejsze
+    </td>
+    <td>
+      <i>w budowie...</i>
+      :exclamation:
+    </td>
   </tr>
 </table>
