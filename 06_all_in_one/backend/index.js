@@ -87,7 +87,7 @@ app.post("/results", (req, resp) => {
         return resp.status(200).json({ number: key, result: value});
       }
       const result = memoFib()(key);
-      console.log(result);
+      console.log("Nowy Wynik: " + result);
       redisClient.set(key, result);
       await addResult(key, result);
       return resp.status(200).json({ number: key, result: result});
@@ -103,5 +103,5 @@ app.get('/', (req, resp) => {
 });
 
 app.listen(4000, err => {
-  console.log('Server listening on port 4000');
+  console.log('Server listening on port 4000.');
 });
