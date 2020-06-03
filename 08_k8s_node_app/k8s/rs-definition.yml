@@ -19,7 +19,7 @@ spec:
     spec:
         containers:
           - name: my-backend-container
-            image: mmazepa/mybackend
+            image: mmazepa/devops_random
             ports:
               - containerPort: 4000
 
