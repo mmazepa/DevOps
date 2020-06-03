@@ -19,7 +19,7 @@ spec:
     spec:
         containers:
           - name: my-mybackend-container
-            image: mmazepa/mybackend
+            image: mmazepa/devops_mybackend
             env:
               - name: REDIS_HOST
                 value: myredisservice

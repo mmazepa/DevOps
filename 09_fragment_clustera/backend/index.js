@@ -17,8 +17,13 @@ const appId = uuidv4();
 const appPort = 3000;
 
 const appName = `AppId: ${appId}`;
-app.get('/:key', (req, res) => {
-  const { key } = req.params;
+
+app.get('/', (req, res) => {
+  return res.send(appName);
+});
+
+app.post('/', (req, res) => {
+  const { key } = req.body;
   redisClient.get(key, (err, value) => {
     if (err) {
       console.log(err);
@@ -33,5 +38,5 @@ app.get('/:key', (req, res) => {
 });
 
 app.listen(appPort, () => {
-  console.log(`Backend listening on port ${appPort}`);
+  console.log(`Backend listening on port ${appPort}.`);
 });
