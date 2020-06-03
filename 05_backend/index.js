@@ -5,11 +5,13 @@ const bodyParser = require('body-parser');
 
 const app = express();
 app.use(bodyParser.json());
+app.use(bodyParser.urlencoded({ extended: true }));
 
 const redis = require('redis');
 const redisClient = redis.createClient({
   host: keys.redisHost,
-  port: keys.redisPort
+  port: keys.redisPort,
+  retry_strategy: () => 1000
 });
 
 const { Pool } = require('pg');
@@ -66,8 +68,8 @@ app.get("/results", (req, resp) => {
 });
 
 app.post("/results", (req, resp) => {
-  const tmp1 = parseInt(req.body.num1) || 0;
-  const tmp2 = parseInt(req.body.num2) || 0;
+  const tmp1 = parseInt(req.body.param1) || 0;
+  const tmp2 = parseInt(req.body.param2) || 0;
 
   var num1, num2;
 
@@ -89,6 +91,7 @@ app.post("/results", (req, resp) => {
       }
       const result = nwd(num1, num2);
       redisClient.set(key, result);
+      await addResult(result);
       return resp.send("Wynik: " + `${result}` + "\n");
     } catch (err) {
       console.log(err);
