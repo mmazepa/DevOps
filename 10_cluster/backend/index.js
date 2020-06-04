@@ -1,4 +1,4 @@
-const { v4: uuidv4 } = require('uuid');
+﻿const { v4: uuidv4 } = require('uuid');
 const express = require('express');
 const bodyParser = require('body-parser');
 
@@ -14,27 +14,10 @@ const redisClient = redis.createClient({
 });
 
 const appId = uuidv4();
-const appPort = 3000;
-
-const appName = `AppId: ${appId}`;
+const appPort = 5000;
 
 app.get('/', (req, res) => {
-  return res.send(appName);
-});
-
-app.post('/', (req, res) => {
-  const { key } = req.body;
-  redisClient.get(key, (err, value) => {
-    if (err) {
-      console.log(err);
-      return res.send(`${appName}: Wystąpił błąd!`);
-    }
-    if (value !== null) {
-      return res.send(`${appName}: Znaleziono w cache!`);
-    }
-    redisClient.set(key, "");
-    return res.send(`${appName}: Dodano do cache!`);
-  });
+  return res.send(`[${appId}] Hello from backend app!`);
 });
 
 app.listen(appPort, () => {
