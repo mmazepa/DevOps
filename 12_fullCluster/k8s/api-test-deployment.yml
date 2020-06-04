@@ -19,7 +19,7 @@ spec:
     spec:
       containers:
         - name: my-mybackend-container
-          image: mmazepa/api-test
+          image: mmazepa/devops_api-test
 
   replicas: 3
   selector:
