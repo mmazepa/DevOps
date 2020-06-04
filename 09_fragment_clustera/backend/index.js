@@ -14,28 +14,29 @@ const redisClient = redis.createClient({
 });
 
 const appId = uuidv4();
-const appPort = 3000;
+const appPort = 5000;
 
 const appName = `AppId: ${appId}`;
 
 app.get('/', (req, res) => {
-  return res.send(appName);
+  // return res.send(appName);
+  return res.send(`[${appId}] Hello from backend app!`);
 });
 
-app.post('/', (req, res) => {
-  const { key } = req.body;
-  redisClient.get(key, (err, value) => {
-    if (err) {
-      console.log(err);
-      return res.send(`${appName}: Wystąpił błąd!`);
-    }
-    if (value !== null) {
-      return res.send(`${appName}: Znaleziono w cache!`);
-    }
-    redisClient.set(key, "");
-    return res.send(`${appName}: Dodano do cache!`);
-  });
-});
+// app.post('/', (req, res) => {
+//   const { key } = req.body;
+//   redisClient.get(key, (err, value) => {
+//     if (err) {
+//       console.log(err);
+//       return res.send(`${appName}: Wystąpił błąd!`);
+//     }
+//     if (value !== null) {
+//       return res.send(`${appName}: Znaleziono w cache!`);
+//     }
+//     redisClient.set(key, "");
+//     return res.send(`${appName}: Dodano do cache!`);
+//   });
+// });
 
 app.listen(appPort, () => {
   console.log(`Backend listening on port ${appPort}.`);

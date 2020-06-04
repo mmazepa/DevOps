@@ -1,7 +1,7 @@
 ﻿## Wybrane technologie DevOps 2020
 
 :information_source:
-**Ostatnia aktualizacja:** 03.06.2020
+**Ostatnia aktualizacja:** 04.06.2020
 
 ### DOCKER
 
