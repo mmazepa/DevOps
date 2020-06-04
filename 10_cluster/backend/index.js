@@ -17,6 +17,8 @@ const redisClient = redis.createClient({
 const appId = uuidv4();
 const appPort = 5000;
 
+console.log(keys);
+
 app.get('/', (req, res) => {
   return res.send(`[${appId}] ${keys.initMessage}`);
 });
