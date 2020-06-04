@@ -6,5 +6,5 @@ metadata:
   name: myapp-config
 
 data:
-  WELCOME_MESSAGE: "Hello to my app"
+  WELCOME_MESSAGE: "Hello to my app!"
   MAX_REQUESTS: "5"
