@@ -23,6 +23,11 @@ const pgClient = new Pool({
   port: keys.pgPort
 });
 
+pgClient.connect(err => {
+  if (err) console.error('[PG_LOG]: Connection error!', err.stack)
+  else console.log('[PG_LOG]: Connected!')
+});
+
 pgClient.on('error', () => {
   console.log('No connection to PG DB');
 });
