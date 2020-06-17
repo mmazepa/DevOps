@@ -1,7 +1,7 @@
 ﻿## Wybrane technologie DevOps 2020
 
 :information_source:
-**Ostatnia aktualizacja:** 17.06.2020
+**Ostatnia aktualizacja:** 18.06.2020
 
 ### DOCKER
 
@@ -131,12 +131,9 @@
     <td>-</td>
     <td><b>FullCluster</b></td>
     <td>
-      Kompletny klaster uwzględniający trzy wcześniejsze
+      Klaster uwzględniający trzy wcześniejsze
     </td>
-    <td>
-      <i>w budowie...</i>
-      :exclamation:
-    </td>
+    <td>-</td>
   </tr>
 </table>
 
