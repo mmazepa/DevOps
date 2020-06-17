@@ -1,7 +1,7 @@
 ﻿## Wybrane technologie DevOps 2020
 
 :information_source:
-**Ostatnia aktualizacja:** 04.06.2020
+**Ostatnia aktualizacja:** 17.06.2020
 
 ### DOCKER
 
@@ -137,5 +137,22 @@
       <i>w budowie...</i>
       :exclamation:
     </td>
+  </tr>
+</table>
+
+### EGZAMIN
+
+<table>
+  <tr>
+    <th>L.P.</th>
+    <th>Deadline</th>
+    <th>Nazwa</th>
+    <th>Opis</th>
+  </tr>
+  <tr>
+    <td>13</td>
+    <td>18.06.2020</td>
+    <td><b>Exam</b></td>
+    <td>Projekt na egzamin</td>
   </tr>
 </table>

@@ -1,0 +1,42 @@
+apiVersion: apps/v1
+
+kind: Deployment
+
+metadata:
+  name: mybackend-deployment
+  labels:
+    app: myapp-backend
+    type: backend
+
+spec:
+  template:
+    metadata:
+      name: mybackend-pod
+      labels:
+        app: myapp-backend
+        type: backend
+
+    spec:
+      containers:
+        - name: my-mybackend-container
+          image: mmazepa/devops_fibonacci
+
+          env:
+            - name: REDIS_HOST
+              value: myredisservice
+            - name: REDIS_PORT
+              value: '6379'
+            - name: PGPASSWORD
+              valueFrom:
+                secretKeyRef:
+                  name: myapp-secret
+                  key: PGPASSWORD
+
+          envFrom:
+            - configMapRef:
+                name: postgres-config
+
+  replicas: 3
+  selector:
+    matchLabels:
+      type: backend
