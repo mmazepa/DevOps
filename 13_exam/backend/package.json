@@ -12,6 +12,7 @@
     "express": "*",
     "nodemon": "*",
     "redis": "*",
-    "uuid": "*"
+    "uuid": "*",
+    "pg": "*"
   }
 }

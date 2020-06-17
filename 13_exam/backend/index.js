@@ -33,8 +33,6 @@ pgClient.query('CREATE TABLE IF NOT EXISTS fibonacci(key INT, value BIGINT)')
   }
 );
 
-console.log(keys);
-
 const memoFib = () => {
   var memo = [0, 1];
   fib = (n) => {
