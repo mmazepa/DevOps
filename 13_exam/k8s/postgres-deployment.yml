@@ -21,8 +21,8 @@ spec:
         - name: my-postgres-container
           image: postgres
           volumeMounts:
-            - mountPath: "/var/lib/postgresql/data/pgdata"
-              name: postgresvolume
+            - mountPath: "/var/lib/postgresql/data/pgdata *(rw,sync,no_subtree_check,no_root_squash)"
+              name: postgres-volume
               subPath: postgres
           env:
             - name: PGDATA
@@ -34,7 +34,7 @@ spec:
                   key: PGPASSWORD
 
       volumes:
-        - name: postgresvolume
+        - name: postgres-volume
           persistentVolumeClaim:
             claimName: postgres-pvc
 
